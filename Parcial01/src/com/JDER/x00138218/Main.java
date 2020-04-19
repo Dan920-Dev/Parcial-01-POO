@@ -9,9 +9,12 @@ public class Main {
 
     public static void main(String[] args) {
         boolean continu = true, continu2 = true;
+        int mesesSP = 0;
 
-        //-----------------------------------------------------------------------------------------
+        System.out.println("-----------------------------------------------------------------------------------------");
         // Para Servicio Profesional
+
+        ServicioProfesional servicioPro = null;
         do {
             try {
                 System.out.println("    Empleado de Servicio Profesional");
@@ -45,11 +48,12 @@ public class Main {
 
                 System.out.println("Digite la cantidad de meses que estara trabajando: ");
                 int months = in.nextInt(); in.nextLine();
+                mesesSP = months;
                 if(SalarySP < 1){
                     throw new EntryIsInvalidException("Estimado usuario lo que ingreso es invalido");
                 }
 
-                ServicioProfesional servicioPro = new ServicioProfesional(nameSP, jobSP, SalarySP, months);
+                servicioPro = new ServicioProfesional(nameSP, jobSP, SalarySP, months);
                 continu = false;
             }
             catch (FieldIsEmptyException ex){
@@ -69,8 +73,10 @@ public class Main {
 
         }while(continu);
 
-        //-----------------------------------------------------------------------------------------
+        System.out.println("-----------------------------------------------------------------------------------------");
         // Para Plaza Fija
+
+        PlazaFija plazaFij = null;
         do {
 
             try {
@@ -109,7 +115,7 @@ public class Main {
                     throw new EntryIsInvalidException("Estimado usuario lo que ingreso es invalido");
                 }
 
-                PlazaFija plazaFij = new PlazaFija(namePF, jobPF, SalaryPF, extension);
+                plazaFij = new PlazaFija(namePF, jobPF, SalaryPF, extension);
                 continu2 = false;
             }
             catch (FieldIsEmptyException ex){
@@ -129,7 +135,25 @@ public class Main {
 
         }while(continu2);
 
+        System.out.println("-----------------------------------------------------------------------------------------");
 
+        System.out.println("    Pagos Respectivos Mensual");
+        System.out.println("");
+        System.out.println(servicioPro.getNombre() + " --------- $" + CalculadoraImpuestos.calcularPago(servicioPro));
+        System.out.println(servicioPro.toString());
+
+        System.out.println("");
+        System.out.println(plazaFij.getNombre() + " --------- $" + CalculadoraImpuestos.calcularPago(plazaFij));
+        System.out.println(plazaFij.toString());
+
+        System.out.println("");
+        System.out.println(CalculadoraImpuestos.mostrarTotales());
+
+
+        System.out.println("| ------------------------------------------------------------------------------------- |");
+        System.out.println("                            Algo extra en el programa....                  ");
+        System.out.println("  ya que el empleado por Servicio profesional trabajara " + mesesSP + " meses en total ");
+        System.out.println("  Devengara: $" + mesesSP * CalculadoraImpuestos.calcularPago(servicioPro));
     }
 
     public static boolean verifyIsNumber(String cadena) {

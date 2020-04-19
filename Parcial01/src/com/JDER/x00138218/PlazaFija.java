@@ -15,4 +15,9 @@ public class PlazaFija extends Empleado {
     public void setExtension(int extension) {
         this.extension = extension;
     }
+
+    @Override
+    public String toString() {
+        return "puesto: " + puesto;
+    }
 }
