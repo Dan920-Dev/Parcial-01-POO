@@ -1,6 +1,6 @@
 package com.JDER.x00138218;
 
-public class Empleado {
+public abstract class Empleado {
     protected String nombre;
     protected String puesto;
     protected double salario;
