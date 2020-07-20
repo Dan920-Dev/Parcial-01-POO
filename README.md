@@ -1,4 +1,6 @@
-![alt text](./Img/Ind.png)
+### Enunciado
+
+![alt text](./Img/UML.png)
 Se solicita, que a partir del siguiente diagrama UML, realice lo siguiente:
 
 * En el Main, cree dos objetos, uno de tipo ServicioProfesional y otro de tipo PlazaFija.
